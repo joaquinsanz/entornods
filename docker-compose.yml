@@ -40,6 +40,30 @@ services:
     networks:
       - frontend
       - backend
+  tema1:
+   build: ./dockerfiles/tema1
+    container_name: tema1
+    hostname: tema1
+    volumes:
+      - ./data/tema1:/var/www/html
+    environment:
+      - VIRTUAL_HOST=tema1.com,www.tema1.com
+    restart: always
+    networks:
+      - frontend
+      - backend
+  introduccionphp:
+    build: ./dockerfiles/introduccionphp
+    container_name: introduccionphp
+    hostname: introduccionphp
+    volumes:
+      - ./data/introduccionphp:/var/www/html
+    environment:
+      - VIRTUAL_HOST=introduccionphp.local,www.introduccionphp.local
+    restart: always
+    networks:
+      - frontend
+      - backend
 
   web2:
     image: php:7.3-apache
